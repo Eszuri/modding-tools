@@ -5,13 +5,12 @@ import {getCharCodes, getReversedCharCodes} from "./remap";
 import {useAtomValue, useSetAtom} from "jotai";
 import {errorTextState, selectFileState, textContentState} from "@/state/jotai";
 
-
-export const handleExtract = () => {
+export const useExtract = () => {
     const selectedFile = useAtomValue(selectFileState);
     const setError = useSetAtom(errorTextState);
     const setTextContent = useSetAtom(textContentState);
 
-    useCallback(async () => {
+    return useCallback(async () => {
         if (!selectedFile) {
             setError("Pilih file .msd terlebih dahulu!");
             return;
@@ -87,5 +86,5 @@ export const handleExtract = () => {
             setError("Gagal membaca file.");
         }
         reader.readAsArrayBuffer(selectedFile);
-    }, [selectedFile])
+    }, [selectedFile, setError, setTextContent]);
 }

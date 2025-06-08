@@ -3,11 +3,12 @@ import {useAtomValue, useSetAtom} from "jotai";
 import {useCallback} from "react";
 import {getCharCodes} from "./remap";
 
-export const handleRepack = () => {
+export const useRepack = () => {
     const selectedFile = useAtomValue(selectFileState);
     const setError = useSetAtom(errorTextState);
     const textContent = useAtomValue(textContentState);
-    useCallback(async () => {
+
+    return useCallback(async () => {
         if (textContent.trim() === "") {
             setError("Tidak ada teks untuk di-repack!");
             return;
@@ -113,5 +114,5 @@ export const handleRepack = () => {
         URL.revokeObjectURL(url);
         setError("");
 
-    }, [textContent, selectedFile])
+    }, [textContent, selectedFile, setError]);
 };

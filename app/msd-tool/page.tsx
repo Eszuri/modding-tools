@@ -1,14 +1,17 @@
 "use client";
 
-import {handleExtract} from './extract';
-import {handleRepack} from './repack';
 import {useAtom, useSetAtom} from 'jotai';
 import {errorTextState, selectFileState, textContentState} from '@/state/jotai';
+import {useExtract} from '@/app/msd-tool/extract';
+import {useRepack} from '@/app/msd-tool/repack';
 
 export default function HomePage() {
     const setSelectedFile = useSetAtom(selectFileState);
     const [error, setError] = useAtom(errorTextState);
     const [textContent, setTextContent] = useAtom(textContentState);
+
+    const handleExtract = useExtract();
+    const handleRepack = useRepack();
 
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
@@ -47,9 +50,7 @@ export default function HomePage() {
                     <button
                         onClick={handleRepack}
                         className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded disabled:bg-gray-500 disabled:cursor-not-allowed"
-                    >
-                        Repack Teks ke .msd
-                    </button>
+                    >Repack Teks ke .MSD</button>
                 </div>
 
                 <textarea
