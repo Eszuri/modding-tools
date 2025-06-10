@@ -31,7 +31,7 @@ export const useExtract = () => {
                 const messageCount = dataView.getUint32(offset, true);
                 offset += 4;
                 if (4 + (messageCount * 8) > dataView.byteLength) {
-                    setError(`Format file tidak valid. MessageCount (${messageCount}) terlalu besar untuk ukuran file.`);
+                    setError(`Format file tidak valid.`);
                     return;
                 }
                 const offsets: bigint[] = [];
@@ -78,7 +78,7 @@ export const useExtract = () => {
                 setTextContent(resultText.trim());
                 setError("");
             } catch (err: any) {
-                setError(`Terjadi kesalahan kritis saat ekstrak: ${err.message}`);
+                setError(`Terjadi kesalahan saat ekstrak: ${err.message}`);
                 console.error(err);
             }
         };

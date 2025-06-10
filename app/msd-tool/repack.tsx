@@ -107,7 +107,7 @@ export const useRepack = () => {
         const a = document.createElement('a');
         a.href = url;
         const originalName = selectedFile?.name.replace(/\.[^/.]+$/, "") || "repacked";
-        a.download = `${originalName}.msd`;
+        a.download = `${originalName}.MSD`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
