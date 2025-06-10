@@ -12,7 +12,7 @@ export default function TextareaEditing() {
         'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
     ];
 
-    const handleKeyDown = (event: any) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (NAVIGATION_KEYS.includes(event.key)) {
             return;
         }
@@ -45,7 +45,7 @@ export default function TextareaEditing() {
         }
     };
 
-    const handlePaste = (event: any) => {
+    const handlePaste = (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
         const {value, selectionStart, selectionEnd} = event.target;
         const protectedPattern = /\{.*?\}/g;
         let match;
