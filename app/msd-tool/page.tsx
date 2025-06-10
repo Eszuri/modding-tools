@@ -35,14 +35,14 @@ export default function HomePage() {
         }
 
         const formData = new FormData();
-        formData.append('file', selectedFile as any);
+        formData.append('file', selectedFile);
 
         try {
             axios.post('/api/upload/single', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
-                onUploadProgress: (progressEvent: any) => {
+                onUploadProgress: (progressEvent: ProgressEvent) => {
                     const percentCompleted = Math.round(
                         (progressEvent.loaded * 100) / progressEvent.total
                     );
