@@ -16,14 +16,14 @@ const myProjects: Project[] = [
         description: 'Sebuah tool yg berfungsi untuk memisahkan header dari sebuah file binary dan disimpan setiap header nya dalam satu file.',
         tags: ['React', "TailwindCSS", "Axios", "Jotai"],
         liveUrl: '/bin-dat-tool',
-        sourceUrl: 'https://github.com/your-username/ecommerce-app',
+        sourceUrl: 'https://github.com/Eszuri/modding-tools',
     },
     {
         title: 'MSD-TOOL',
         description: 'Sebuah tool yg berfungsi untuk mengubah file MSD yg berisi binary menjadi text biasa untuk memudahkan dalam pengeditan. tool ini dikhusukan untuk game God Hand ',
         tags: ['React', "TailwindCSS", "Jotai", "JSZip"],
         liveUrl: '/msd-tool',
-        sourceUrl: 'https://github.com/your-username/project-management-saas',
+        sourceUrl: 'https://github.com/Eszuri/modding-tools',
     }
 ];
 
