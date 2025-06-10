@@ -46,7 +46,7 @@ export default function TextareaEditing() {
     };
 
     const handlePaste = (event: React.ClipboardEvent<HTMLTextAreaElement>) => {
-        const {value, selectionStart, selectionEnd} = event.target;
+        const {value, selectionStart, selectionEnd} = event.target as HTMLTextAreaElement;
         const protectedPattern = /\{.*?\}/g;
         let match;
 
