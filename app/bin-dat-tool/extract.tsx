@@ -86,7 +86,7 @@ export default function useExtract() {
             setStatus("Ekstraksi selesai!");
             setError("");
 
-        } catch (e: any) {
+        } catch (e: unknown) {
             setError(`Error saat ekstrak: ${e.message}`);
             setStatus("Gagal.");
         }
