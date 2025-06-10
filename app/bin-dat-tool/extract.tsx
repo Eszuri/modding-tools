@@ -48,7 +48,7 @@ export default function useExtract() {
                 const extBytes = new Uint8Array(arrayBuffer, extTableOffset + i * 4, 4);
                 const zeroIndex = extBytes.indexOf(0);
                 const finalBytes = zeroIndex !== -1 ? extBytes.slice(0, zeroIndex) : extBytes;
-                let extension = textDecoder.decode(finalBytes);
+                const extension = textDecoder.decode(finalBytes);
                 extensions.push(extension || "DMY");
             }
 
