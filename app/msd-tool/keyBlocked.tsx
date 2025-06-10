@@ -17,7 +17,7 @@ export default function TextareaEditing() {
             return;
         }
 
-        const {value, selectionStart, selectionEnd} = event.target as any;
+        const {value, selectionStart, selectionEnd} = event.target as HTMLTextAreaElement;
         const protectedPattern = /\{.*?\}/g;
         let match;
 
