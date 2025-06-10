@@ -93,7 +93,7 @@ export default function useRepack() {
             setStatus("Repack selesai!");
             setError("");
 
-        } catch (e: any) {
+        } catch (e: unknown) {
             setError(`Error saat repack: ${e.message}`);
             setStatus("Gagal.");
         }
