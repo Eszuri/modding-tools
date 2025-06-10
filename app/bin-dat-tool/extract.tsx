@@ -4,14 +4,13 @@ import JSZip from "jszip";
 import {useCallback} from "react";
 
 export default function useExtract() {
-    const setError = useSetAtom(errorBINState);
-    const setStatus = useSetAtom(statusState);
     const archiveFile = useAtomValue(archiveFileState);
-    const setLog = useSetAtom(logState);
-
-    const extensionFile = archiveFile?.name.split('.').pop();
 
     return useCallback(async () => {
+        const setError = useSetAtom(errorBINState);
+        const setStatus = useSetAtom(statusState);
+        const setLog = useSetAtom(logState);
+        const extensionFile = archiveFile?.name.split('.').pop();
 
         if (!archiveFile) {
             setError("Pilih file .DAT atau .BIN terlebih dahulu!");
@@ -86,8 +85,8 @@ export default function useExtract() {
             setStatus("Ekstraksi selesai!");
             setError("");
 
-        } catch (e: unknown) {
-            setError(`Error saat ekstrak: ${e.message}`);
+        } catch (e) {
+            setError(`Error saat ekstrak: ${e}`);
             setStatus("Gagal.");
         }
     }, [archiveFile])

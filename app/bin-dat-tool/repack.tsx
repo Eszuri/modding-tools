@@ -5,11 +5,11 @@ import {useCallback} from "react";
 export default function useRepack() {
     const repackFiles = useAtomValue(repackFilesState);
     const manifestFile = useAtomValue(manifestFileState);
-    const setError = useSetAtom(errorBINState);
-    const setStatus = useSetAtom(statusState);
 
 
     return useCallback(async () => {
+        const setError = useSetAtom(errorBINState);
+        const setStatus = useSetAtom(statusState);
         if (!repackFiles || !manifestFile) {
             setError("Pilih file manifest (.txt) dan semua file komponennya!");
             return;
@@ -93,8 +93,8 @@ export default function useRepack() {
             setStatus("Repack selesai!");
             setError("");
 
-        } catch (e: unknown) {
-            setError(`Error saat repack: ${e.message}`);
+        } catch (e) {
+            setError(`Error saat repack: ${e}`);
             setStatus("Gagal.");
         }
     }, [repackFiles, manifestFile])

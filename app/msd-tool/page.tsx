@@ -5,7 +5,7 @@ import {errorTextState, selectFileState, textContentState} from '@/state/jotai';
 import {useExtract} from '@/app/msd-tool/extract';
 import {useRepack} from '@/app/msd-tool/repack';
 import {useState} from 'react';
-import axios from 'axios';
+import axios, {AxiosProgressEvent} from 'axios';
 import TextareaEditing from '@/app/msd-tool/keyBlocked';
 
 export default function HomePage() {
@@ -35,16 +35,17 @@ export default function HomePage() {
         }
 
         const formData = new FormData();
-        formData.append('file', selectedFile);
+        formData.append('file', selectedFile as File);
 
         try {
             axios.post('/api/upload/single', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
-                onUploadProgress: (progressEvent: ProgressEvent) => {
+                onUploadProgress: (progressEvent: AxiosProgressEvent) => {
+                    const totalProgress = progressEvent.total as number
                     const percentCompleted = Math.round(
-                        (progressEvent.loaded * 100) / progressEvent.total
+                        (progressEvent.loaded * 100) / totalProgress
                     );
                     setProgress(percentCompleted);
                 },

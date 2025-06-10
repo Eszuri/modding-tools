@@ -77,9 +77,8 @@ export const useExtract = () => {
                 }
                 setTextContent(resultText.trim());
                 setError("");
-            } catch (err: unknown) {
-                setError(`Terjadi kesalahan saat ekstrak: ${err.message}`);
-                console.error(err);
+            } catch (err) {
+                setError(`Terjadi kesalahan saat ekstrak: ${err}`);
             }
         };
         reader.onerror = () => {

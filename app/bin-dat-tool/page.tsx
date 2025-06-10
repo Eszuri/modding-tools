@@ -1,7 +1,7 @@
 "use client";
 
 import {archiveFileState, errorBINState, logState, manifestFileState, repackFilesState, statusState} from "@/state/jotai";
-import {useAtom, useAtomValue} from "jotai";
+import {useAtom, useAtomValue, useSetAtom} from "jotai";
 import useExtract from "@/app/bin-dat-tool/extract";
 import useRepack from "@/app/bin-dat-tool/repack";
 import {ChangeEvent, useEffect, useState} from "react";
@@ -17,8 +17,8 @@ export default function HomePage() {
     const [archiveFile, setArchiveFile] = useAtom(archiveFileState);
     const [manifestFile, setManifestFile] = useAtom(manifestFileState);
     const [repackFiles, setRepackFiles] = useAtom(repackFilesState);
-    const [status, setStatus] = useAtom(statusState);
     const error = useAtomValue(errorBINState);
+    const status = useAtomValue(statusState);
     const log = useAtomValue(logState);
     const [switchMode, setSwitchMode] = useState(false);
     const [uploadingFiles, setUploadingFiles] = useState<UploadProgress[]>([]);
@@ -37,6 +37,7 @@ export default function HomePage() {
     }
 
     useEffect(() => {
+        const setStatus = useSetAtom(statusState);
         if (uploadingFiles.length === 0) {
             setStatus("Upload File Terlebih Dahulu")
         } else {
