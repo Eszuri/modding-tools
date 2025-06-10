@@ -53,7 +53,7 @@ export default function HomePage() {
 
             setMessage('Upload Success');
 
-        } catch (err) {
+        } catch {
             setMessage('Upload Failed');
         }
     };
