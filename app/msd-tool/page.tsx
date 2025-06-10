@@ -55,7 +55,6 @@ export default function HomePage() {
 
         } catch (err) {
             setMessage('Upload Failed');
-            console.error(err);
         }
     };
     return (

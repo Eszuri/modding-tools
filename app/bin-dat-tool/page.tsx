@@ -19,6 +19,7 @@ export default function HomePage() {
     const [repackFiles, setRepackFiles] = useAtom(repackFilesState);
     const error = useAtomValue(errorBINState);
     const status = useAtomValue(statusState);
+    const setStatus = useSetAtom(statusState);
     const log = useAtomValue(logState);
     const [switchMode, setSwitchMode] = useState(false);
     const [uploadingFiles, setUploadingFiles] = useState<UploadProgress[]>([]);
@@ -37,7 +38,6 @@ export default function HomePage() {
     }
 
     useEffect(() => {
-        const setStatus = useSetAtom(statusState);
         if (uploadingFiles.length === 0) {
             setStatus("Upload File Terlebih Dahulu")
         } else {

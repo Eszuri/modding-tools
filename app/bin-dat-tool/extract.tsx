@@ -5,13 +5,12 @@ import {useCallback} from "react";
 
 export default function useExtract() {
     const archiveFile = useAtomValue(archiveFileState);
+    const setError = useSetAtom(errorBINState);
+    const setStatus = useSetAtom(statusState);
+    const setLog = useSetAtom(logState);
+    const extensionFile = archiveFile?.name.split('.').pop();
 
     return useCallback(async () => {
-        const setError = useSetAtom(errorBINState);
-        const setStatus = useSetAtom(statusState);
-        const setLog = useSetAtom(logState);
-        const extensionFile = archiveFile?.name.split('.').pop();
-
         if (!archiveFile) {
             setError("Pilih file .DAT atau .BIN terlebih dahulu!");
             return;
